@@ -3,6 +3,7 @@ using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -20,6 +21,8 @@ namespace API.Controllers
         [Route("create")]
         public IActionResult Create([FromBody] Produto produto)
         {
+
+            produto.Categoria = _context.Categorias.Find(produto.CategoriaId);
             _context.Produtos.Add(produto);
             _context.SaveChanges();
             return Created("", produto);
@@ -28,7 +31,12 @@ namespace API.Controllers
         //get: api/produto/list
         [HttpGet]
         [Route("list")]
-        public IActionResult List() => Ok(_context.Produtos.ToList());
+        public IActionResult List() => Ok(_context.Produtos
+        .Include(produto => produto.Categoria)
+        //.Include(ObjetoRelacionamento => Objeto.prop)
+                //.Include(ObjetoRelacionamento => Objeto.prop.PróximoRelacionamento)
+
+        .ToList());
 
         [HttpGet]
         [Route("getById/{id}")]

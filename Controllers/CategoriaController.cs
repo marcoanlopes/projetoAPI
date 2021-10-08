@@ -20,6 +20,7 @@ namespace API.Controllers
         [Route("create")]
         public IActionResult Create([FromBody] Categoria categoria)
         {
+
             _context.Categorias.Add(categoria);
             _context.SaveChanges();
             return Created("", categoria);

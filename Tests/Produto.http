@@ -3,7 +3,11 @@ Content-Type: application/json
 
 {
     "Nome": "Bolacha",
-    "Preco": 3.5
+    "Preco": 3.5,
+    "Descricao": "Desc",
+    "Quantidade": 123,
+    "CategoriaId": 1
+
 }
 
 ###
