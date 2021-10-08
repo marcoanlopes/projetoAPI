@@ -10,11 +10,11 @@ Content-Type: application/json
 GET https://localhost:5001/api/produto/list
 
 ###
-GET https://localhost:5001/api/produto/getById/50
+GET https://localhost:5001/api/produto/getById/2
 
 
 ###
-PUT https://localhost:5001/api/produto/update
+PUT https://localhost:5001/api/produto/update/1
 Content-Type: application/json
 
 {
